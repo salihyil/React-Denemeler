@@ -100,40 +100,46 @@ reactDOM.render(element, document.getElementById("root")) */
 //Props Kavramı, "First-classNameName" Fonksiyonlar
 
 const App = () => { // ana App component
+
     return (
-        <div>{/*export etmezsek hata verir!!! metot ve class isimlendirmeleri büyük harfle yaz. */}
-            
-            <div className="card-group">
-                <Collapse href="collapseExample1" baslik="1. Baslık için Tıkla">
-                    <PersonelCard
-                        cardTitle="Card Title I"
-                        cardText="Lorem Ipsum I"
-                        updatedTime="Last Updated 1 min ago."
-                        image="https://picsum.photos/id/237/300/300"
-                    />
-                </Collapse>
+        <div className="container">
+            <div className="row">
+                <div className="card-group w-100">
 
-                <Collapse href="collapseExample2" baslik="2. Baslık için Tıkla">
-                    <PersonelCard
-                        cardTitle="Card Title II"
-                        cardText="Lorem Ipsum II"
-                        updatedTime="Last Updated 2 min ago."
-                        image="https://picsum.photos/id/15/300/300"
-                    />
-                </Collapse>
-                
-                <Collapse href="collapseExample3" baslik="3. Baslık için Tıkla">
-                    <PersonelCard
-                        cardTitle="Card Title III"
-                        cardText="Lorem Ipsum III"
-                        updatedTime="Last Updated 3 min ago."
-                        image="https://picsum.photos/id/18/300/300"
-                    />
-                </Collapse>
-                
+                    <div className="col-4">
+                        <Collapse href="collapseExample1" baslik="1. Baslık için Tıkla">
+                            <PersonelCard
+                                //cardTitle="Card Title I" Default props
+                                cardText="Lorem Ipsum I"
+                                updatedTime="Last Updated 1 min ago."
+                                image="https://picsum.photos/id/237/300/300"
+                            />
+                        </Collapse>
+                    </div>
 
+                    <div className="col-4">
+                        <Collapse href="collapseExample2" baslik="2. Baslık için Tıkla">
+                            <PersonelCard
+                                cardTitle="Card Title II"
+                                cardText="Lorem Ipsum II"
+                                updatedTime="Last Updated 2 min ago."
+                                image="https://picsum.photos/id/237/300/300"
+                            />
+                        </Collapse>
+                    </div>
+
+                    <div className="col-4">
+                        <Collapse href="collapseExample3" baslik="3. Baslık için Tıkla">
+                            <PersonelCard
+                                cardTitle="Card Title III"
+                                cardText="Lorem Ipsum III"
+                                updatedTime="Last Updated 3 min ago."
+                                image="https://picsum.photos/id/237/300/300"
+                            />
+                        </Collapse>
+                    </div>
+                </div>
             </div>
-
         </div>
     );
 }
