@@ -108,11 +108,11 @@ const App = () => { // ana App component
 
                     <div className="col-4">
                         <Collapse href="collapseExample1" baslik="1. Baslık için Tıkla">
-                            <PersonelCard
+                            <PersonelCard //props ile : cardText, updatedTime, image ulaşıyoruz.  
                                 //cardTitle="Card Title I" Default props
                                 cardText="Lorem Ipsum I"
                                 updatedTime="Last Updated 1 min ago."
-                                image="https://picsum.photos/id/237/300/300"
+                                image="https://picsum.photos/id/1000/300/300"
                             />
                         </Collapse>
                     </div>
@@ -123,7 +123,7 @@ const App = () => { // ana App component
                                 cardTitle="Card Title II"
                                 cardText="Lorem Ipsum II"
                                 updatedTime="Last Updated 2 min ago."
-                                image="https://picsum.photos/id/237/300/300"
+                                image="https://picsum.photos/id/101/300/300"
                             />
                         </Collapse>
                     </div>
@@ -134,7 +134,7 @@ const App = () => { // ana App component
                                 cardTitle="Card Title III"
                                 cardText="Lorem Ipsum III"
                                 updatedTime="Last Updated 3 min ago."
-                                image="https://picsum.photos/id/237/300/300"
+                                image="https://picsum.photos/id/102/300/300"
                             />
                         </Collapse>
                     </div>
@@ -146,9 +146,28 @@ const App = () => { // ana App component
 
 ReactDOM.render(
     <App />,
-    document.getElementById("root")
+    document.getElementById('root')
 );
 
 
 
+/* React Saat Örneği
+function tick() {
+    const element = (
+      <div>
+        <h1>Merhaba Dünya!</h1>
+        <h2>Saat şu anda {new Date().toLocaleTimeString()}.</h2>
+      </div>
+    );
+    // highlight-next-line
+    ReactDOM.render(element, document.getElementById('root'));
+  }
+  
+  setInterval(tick, 1000); setInterval() metodu ile her saniye bitiminde ReactDOM.render() metodu çağrılıyor. Bu sayede her yeni render ile arayüz güncellenmiş oluyor.
+  Not: Genelde birçok React uygulamasında ReactDOM.render() yalnızca bir kez çağrılır. 
+  Sonraki bölümlerde bu tarz kodların nasıl state’li component'lere dönüştürüleceğine değineceğiz.
+
+  Not:Bu örnek için render() metodunun birden fazla kez çağrılması amacına hizmet etmiş olabilir ancak bu genelde kullanılan bir yöntem değildir. 
+  Bunun yerine sonraki bölümlerde değineceğimiz state objesi tutan class (stateful) component'ler kullanılır.
+*/
 
