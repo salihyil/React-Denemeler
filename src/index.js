@@ -107,7 +107,7 @@ const App = () => { // ana App component
                 <div className="card-group w-100">
 
                     <div className="col-4">
-                        <Collapse href="collapseExample1" baslik="1. Baslık için Tıkla">
+                        <Collapse href="collapseExample1" >
                             <PersonelCard //props ile : cardText, updatedTime, image ulaşıyoruz.  
                                 //cardTitle="Card Title I" Default props
                                 cardText="Lorem Ipsum I"
@@ -118,7 +118,7 @@ const App = () => { // ana App component
                     </div>
 
                     <div className="col-4">
-                        <Collapse href="collapseExample2" baslik="2. Baslık için Tıkla">
+                        <Collapse href="collapseExample2" >
                             <PersonelCard
                                 cardTitle="Card Title II"
                                 cardText="Lorem Ipsum II"
@@ -129,7 +129,7 @@ const App = () => { // ana App component
                     </div>
 
                     <div className="col-4">
-                        <Collapse href="collapseExample3" baslik="3. Baslık için Tıkla">
+                        <Collapse href="collapseExample3">
                             <PersonelCard
                                 cardTitle="Card Title III"
                                 cardText="Lorem Ipsum III"

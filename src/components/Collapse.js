@@ -3,122 +3,73 @@
 //2- sonra render metodu ilk kez calisti
 //3- onClick event çalıştı
 //4- setState state nesnesini güncellediği --> triggerred render
-//5- render metodugüncel JSX'i sayfada gösteriyor.
-
-
+//5- render metodu güncel JSX'i sayfada gösteriyor.
 
 import React from 'react';
 
-// const Collapse = (props) => {
-//     console.log("Collapse props.children", props.children); //props.children ile <Collapse>: Parent component <PersonelCard />: children component oluyor. 
-//     return ( // concat() Methodu 2 stringi birbirine bağlamak
-//         <div>
-//             <a className="btn btn-primary w-100" data-toggle="collapse" href={"#".concat(props.href)} role="button" aria-expanded="false" aria-controls="collapseExample">
-//                 {props.baslik}
-//                 </a>
-//             <div className="collapse" id={props.href}>
-//                 {props.children} 
-
-//             </div>
-//         </div>
-//         //{props.children} ile <PersonelCard /> children'a ulaşıyoruz. 
-//     );
-// };
-
 class Collapse extends React.Component {
 
-    constructor() { // state'i oluşturmak için en uygun yerlerden bir tanesi constructor() metodunun içerisidir.
-        super(); // super() metodu ne işimize yarıyor? React.Component içerisindeki constructor() metoduna ait olan tüm özellikleri almamıza yarıyor.
-
-        this.state = { //showMore arrow function içine atarsak?
-            //showContent: "test content" //ilerde bu ifadeyi boolean ifade yapıcaz.
-            showContent: false //Bu yazım şekli statik. setState metodu dinatic hale değiricez.
-            
+    /*
+    constructor() {
+        super();
+        this.state = {
+            showContent: false
         }
-
-        /*console.log(this); //3 tane Collapse {props: undefined, context: undefined, refs: {…}, updater: {…}, state: {…}}
-        // this.showMore = () => {// Böyle yazımın sorunu 1den fazla metot olduğunun hepsni constructor() içine mi yazıcaz? Kod okunurluğu zorlaştırır. Bu sorunu bind(bağlamak) metodu ile hallederiz.
-        //     console.log(this); //thisi gördü. çıktısı: 1tane Collapse {props: {…}, context: {…}, refs: {…}, updater: {…}, state: {…}, …}
-        // }*/
-        //this.showMore = this.ShowMore.bind(this) // Kodun açıklaması: bind içindeki this'i (-yani class Collapse'den gelen objeyi-) this.ShowMore'a bağla demek.
     }
-    
-    /*
-    showMore() {
-        console.log(this); //undefined alırız sebebi burdaki yazdığımız showMore() metodu React.Component'e ulaşamıyor.
-        //class Collapse extends React.Component içinde constructor() ve render() metotları olduğu için this'i algılayabiliyor. 
-        //Kendi yazdığımız metota this'i React.Component'e tanıtmak için ne yapabiliriz?   constructor() içine yazarız. 
-    }*/
+    */
 
-    /*
-    //Ancak genelde bu yöntemde kullanılmaz arrow function kullanılır.
-    ShowMore() { //this.ShowMore = this.ShowMore.bind(this) kod ile this Collapse'e  reference(refer) edecek. 
-        //console.log(this);
-        this.setState({showContent: true})
-    }*/
+    state = { showContent: false };// state'i direk böylede yazabilirdik. constructor() olayını anlamak için state'i metot içinde kullandık.
 
-    showMore = () => { //arrow fonksiyonda yazınca this'i direk tanıyor.  constructor() içinde this.showMore = this.ShowMore.bind(this) diye tanıtmamıza gerek kalmıyor.
-        //arrow function and binding googling sonuç: Does not have its own bindings to -this- or -super-, and should not be used as -methods-. 
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-        console.log(this);
-        this.setState({showContent: !this.state.showContent}) //onClick={this.showMore} tıkladık tetiklendi true oldu açtı, bastık tetiklendi false oldu kapandı.
+    showMore = () => {
+        // console.log(this);
+        this.setState({ showContent: !this.state.showContent })
 
-        /*this.state = { //State değerini direk değiştirmek istesek? Uyarı geldi: Do not mutate state directly. Use setState()  react/no-direct-mutation-state
-                       //Neden setState() metodunu kullan diyor? React sayfayı tekrardan render ediyor. setState() metodu render() metodunun tekrar çalışması için trigger işlevi görüyor.
-                       //this.state = {showContent: true} diye direk çağırınca sayfayı tekrardan render etmiyor.. 
-            showContent: true 
-        }*/
     }
 
+    /*
+    componentDidMount(){
+        console.log("componentDidMount oluşturuldu"); //3 tane çıktı verdi. Çünkü 3 tane <Collapse component çağırıyoruz.  index.jsde 3 tane Collapse var.
+    }
+
+    componentDidUpdate(){
+        console.log("componentDidUpdate güncellendi");// Collapse component'lere tıklayınca componentDidUpdate() metodu çalışıyor.
+    }
+
+    componentWillUnmount(){
+
+    }
+    */
 
     render() {
-        //console.log(this);  //3 tane Collapse {props: undefined, context: undefined, refs: {…}, updater: {…}, state: {…}}
-        return ( // concat() Methodu 2 stringi birbirine bağlamak
-            // <div>
-            //     <a className="btn btn-primary w-100" data-toggle="collapse" href={"#".concat(this.props.href)} role="button" aria-expanded="false" aria-controls="collapseExample">
-            //         {this.props.baslik}
-
-            //         </a>
-            //     <div className="collapse show" id={this.props.href}>
-            //         {this.props.children} 
-            //         {this.state.showContent}
-            //         {/* propslar: Immutable yani değiştirilemez içerik 
-            //             stateler: değiştirilebilir içerikler 
-            //             Bu ne demek ilerki derslerde bootstrap ile çağırdığımız kodları state ile içeriği göster yada gösterme diye kullanıcaz.  
-            //         */}
-            //     </div>
-            // </div>
-
-            //9. video state kısım start
+        return (
             <div>
                 <button className="btn btn-primary w-100" onClick={this.showMore}>
-                    {this.props.baslik /*Buton isimleri*/}
+                    {/* {this.props.children.props.cardTitle} 
+                    {/*this.props içinde 3 tane {href: "collapseExample1", children: {…}} children dediği PersonelCard component
+                    this Burdaki class Collapse'dan oluşacak obje  */}
+
+
+                    {/* {this.props.children.props.cardTitle} Kodunu kullanmıyoruz. Çünkü yeni bir children olsaydı hep elden children yazmak gerekirdi.*/}
+                    {console.log("this.props.children",this.props.children) }
+                    {/* Çıktısı:<PersonelCard children olduğu için onun değerler gözüküyor. */}
+
+                    {React.Children.map(this.props.children, childrens => childrens.props.cardTitle)}
+                    {/* Bu this.props.children içinde yer alan her birincil alt eleman için bir fonksiyon çağırır, this‘i (kendisini) thisArg ile belirleyin. 
+                    Eğer this.props.children bir dizi ise taranacak ve dizi içindeki her alt eleman için fonksiyon çağrılacaktır. 
+                    Eğer alt elemanlar null veya undefined ise, bu metod bir dizi yerine null veya undefined döndürür. */}
+
                 </button>
-
                 {
-                    this.state.showContent ? ( // Burada if-elsein tek satırlık yazılışını kullandık.
+                    this.state.showContent ? (
                         <div className="collapse show" id={this.props.href}>
-                            {this.props.children /* PersonalCard component içindekilerinin aktarıldığı yer */}
-                            {/* propslar: Immutable yani değiştirilemez içerik 
-                                stateler: değiştirilebilir içerikler 
-                                Bu ne demek bootstrap ile çağırdığımız kodları state ile içeriği göster yada gösterme diye kullanıcaz.  
-                            */}
-                        </div>
-                    ) : null 
-                }
+                            {this.props.children}
 
+                        </div>
+                    ) : null
+                }
             </div>
-            //9. video state kısım end
         );
     };
 };
-
-
-
-
-
-
-
-
 
 export default Collapse;
