@@ -62,7 +62,8 @@ class Collapse extends React.Component {
                 {
                     this.state.showContent ? (
                         <div className="collapse show" id={this.props.href}>
-                            {this.props.children}
+                            {/* {this.props.children} */}
+                            {React.Children.map(this.props.children, childrens => childrens)}
 
                         </div>
                     ) : null
